@@ -16,6 +16,7 @@ $conferences = $stm->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/tofsjonas/sortable@latest/sortable-base.min.css" rel="stylesheet" />
     <title>Inscription Conférence</title>
 </head>
 
@@ -29,7 +30,7 @@ $conferences = $stm->fetchAll();
   die();
   endif; ?>
     <h2>Liste des conférences</h2>
-    <table class="table table-hover">
+    <table class="table table-hover sortable">
   <thead>
     <tr>
       <th scope="col">Id</th>
@@ -58,5 +59,6 @@ $conferences = $stm->fetchAll();
   </tbody>
 </table>
 </div>
+<script src="https://cdn.jsdelivr.net/gh/tofsjonas/sortable@latest/dist/sortable.auto.min.js"></script>
 </body>
 </html>
