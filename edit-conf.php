@@ -1,25 +1,18 @@
 <?php
 include 'fonctions.php';
 require 'connexion-bd.php';
-// ===============================================
-// VARIABLES FORMULAIRE
-// ===============================================
-$nom = '';
-$prenom = '';
-$email = '';
-$password = '';
-$password_confirm = '';
-$date_naissance = '';
-$telephone = '';
-$pays = '';
-$type = '';
-$centres_interet = [];
-$errors = [];
 
-$liste_pays = ["France", "Belgique", "Suisse", "Canada"];
-$types_acceptes = ["Etudiant", "Professionnel", "Speaker"];
-$interets_acceptes = ["PHP", "JavaScript", "DevOps", "IA"];
+$idVoir = $_GET['id'] ?? null;
 
+if (! is_numeric($idVoir)) {
+    dd("cete conference n'existe pas !!!");
+}
+
+$pdo = new PDO($dsn, $user, $pass, $option);
+$stm = $pdo->prepare("SELECT * FROM participants where id = :id");
+$stm->bindParam(':id', $idVoir, PDO::PARAM_INT);
+$stmConf = $stm->execute();
+$conference = $stm->fetch();
 // ===============================================
 // TRAITEMENT FORMULAIRE
 // ===============================================

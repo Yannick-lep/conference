@@ -16,4 +16,3 @@ if($suppResult) {
     header("Location: index.php");
     exit;
 }
-// dd($suppResult);
