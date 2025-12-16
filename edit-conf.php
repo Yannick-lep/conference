@@ -4,7 +4,7 @@ require 'connexion-bd.php';
 
 $idVoir = $_GET['id'] ?? null;
 
-if (! is_numeric($idVoir)) {
+if (!is_numeric($idVoir)) {
     dd("cete conference n'existe pas !!!");
 }
 
@@ -13,6 +13,27 @@ $stm = $pdo->prepare("SELECT * FROM participants where id = :id");
 $stm->bindParam(':id', $idVoir, PDO::PARAM_INT);
 $stmConf = $stm->execute();
 $conference = $stm->fetch();
+
+// ======================================================
+// VARIABLES FORMULAIRE
+// ======================================================
+$nom = $conference['nom'];
+$prenom = $conference['prenom'];
+$email = $conference['email'];
+$password = '';
+$password_confirm = '';
+$date_naissance = $conference['date_naissance'];
+$telephone = $conference['telephone'];
+$pays = $conference['pays'];
+$type_array = explode($conference['type_participant']);
+$type = $type_array;
+$centres_interet_array = explode(',',$conference['centres_interet']);
+$centres_interet = $centres_interet_array;
+$errors = [];
+
+$liste_pays = ["France", "Belgique", "Suisse", "Canada"];
+$types_acceptes = ["Etudiant", "Professionnel", "Speaker"];
+$interets_acceptes = ["PHP", "JavaScript", "DevOps", "IA"];
 // ===============================================
 // TRAITEMENT FORMULAIRE
 // ===============================================

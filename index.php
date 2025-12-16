@@ -50,7 +50,7 @@ $conferences = $stm->fetchAll();
     <td><?= $conference['type_participant']; ?></td>
     <td><?= $conference['centres_interet']; ?></td>
     <td><a href="voir-conf.php?id<?= $conference['id']; ?>" class="btn btn-info">Voir</a>
-    <a href="" class="btn btn-secondary">Editer</a>
+    <a href="edit-conf.php?id<?= $conference['id']; ?>" class="btn btn-secondary">Editer</a>
     <a href="supp-conf.php?id=<?= $conference['id']; ?>" class="btn btn-warning"
     onclick="return confirm('Etes vous certain de vouloir supprimer cette conference ?');">supprimer</a></td>
 
